@@ -1,0 +1,24 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C2*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C3*/SET SCHEMA PUBLIC
+create table Carrera (id varchar(32) not null, nombre varchar(255), clase_id varchar(32), facultad_id varchar(32), primary key (id))
+create table Clase (id varchar(32) not null, docente varchar(50) not null, nombre varchar(100) not null, carrera_id varchar(32), facultad_id varchar(32), primary key (id))
+create table Estudiante (id varchar(32) not null, matricula varchar(20) not null, nombre varchar(50) not null, carrera_id varchar(32), primary key (id))
+create table Facultad (id varchar(32) not null, nombre varchar(100) not null, primary key (id))
+create table IMAGES (ID varchar(32) not null, GALLERY varchar(32), image varbinary(16777216), primary key (ID))
+create table Justificacion (id varchar(32) not null, documento varbinary(255), estado varchar(20) not null, fecha date, clase_id varchar(32), estudiante_id varchar(32), primary key (id))
+create table OXDISCUSSIONCOMMENTS (id varchar(32) not null, comment clob(16777216), discussionId varchar(32), time timestamp, userName varchar(30), primary key (id))
+alter table Estudiante add constraint UK_kte9tp4i4jvy7hib1swyfnm60 unique (matricula)
+create index IDXbhlx4vunn24ym1tbrlgq8g30m on OXDISCUSSIONCOMMENTS (discussionId)
+alter table Carrera add constraint FK56k514gs2k5rhv4xofm5jklxn foreign key (clase_id) references Clase
+alter table Carrera add constraint FKlckuumhpyudjsy0t4m26lnex7 foreign key (facultad_id) references Facultad
+alter table Clase add constraint FKlrygqeyb2qug3b464x06b90yq foreign key (carrera_id) references Carrera
+alter table Clase add constraint FKqta34eq869lgaaedvkna5r5md foreign key (facultad_id) references Facultad
+alter table Estudiante add constraint FKhreghr5qi4fcmhw777j0dljt3 foreign key (carrera_id) references Carrera
+alter table Justificacion add constraint FKwoasnq93vso0c66u8dfr2rmh foreign key (clase_id) references Clase
+alter table Justificacion add constraint FKgbpd4d6l4hwr0j1rcfilkukla foreign key (estudiante_id) references Estudiante
+INSERT INTO FACULTAD VALUES('8a3b5410938ef93e01938efa38840000','Ingenieria y Arquitectura')
+COMMIT
