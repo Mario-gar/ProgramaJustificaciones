@@ -9,6 +9,15 @@ import org.openxava.model.Identifiable;
 
 import java.time.LocalDate;
 
+@View(members =
+        "estudiante;" +
+                "clase;" +
+                "fechas;" +
+                "motivo;" +
+                "documento;" +
+                "estado;"
+)
+
 @Getter
 @Setter
 @Entity
@@ -23,12 +32,18 @@ public class Justificacion extends Identifiable {
     private Clase clase;
 
     @Stereotype("DATE")
-    private LocalDate fecha;
+    private LocalDate fechaInicio; // Fecha de inicio del rango
+
+    @Stereotype("DATE")
+    private LocalDate fechaFin; // Fecha final del rango
+
+    @Column(length = 500)
+    private String motivo;
 
     @Stereotype("FILE")
     private byte[] documento;
 
-    @Column(length = 20, nullable = false)
-    private String estado = "Pendiente";
-
+    @Enumerated(EnumType.STRING)
+    private EstadoJustificacion estado = EstadoJustificacion.PENDIENTE;
 }
+

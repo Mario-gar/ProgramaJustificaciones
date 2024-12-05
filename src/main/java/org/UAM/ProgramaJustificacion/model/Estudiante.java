@@ -13,14 +13,13 @@ import org.openxava.model.Identifiable;
 @Table(name = "Estudiante")
 public class Estudiante extends Identifiable {
 
+    @OneToOne
+    private Usuario usuario; // Asocia al Usuario
+
     @Column(length = 50, nullable = false)
     private String nombre;
-
-    @Column(length = 20, unique = true, nullable = false)
-    private String matricula;
 
     @ManyToOne
     @DescriptionsList
     private Carrera carrera;
-
 }
