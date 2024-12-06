@@ -34,9 +34,8 @@ public class Justificacion extends Identifiable {
     @Column(length = 500)
     private String motivo;
 
-    @File
-    @Column(length = 32)
-    private String fotos;
+    @Stereotype("FILE")
+    private byte[] documento;
 
     @Enumerated(EnumType.STRING)
     private EstadoJustificacion estado;
