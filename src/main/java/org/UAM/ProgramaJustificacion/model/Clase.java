@@ -1,7 +1,6 @@
 package org.UAM.ProgramaJustificacion.model;
 
 import javax.persistence.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.openxava.annotations.*;
@@ -11,8 +10,6 @@ import org.openxava.model.Identifiable;
 @Setter
 @Entity
 public class Clase extends Identifiable {
-
-
     @Column(length = 100, nullable = false)
     private String nombre;
 
@@ -26,5 +23,4 @@ public class Clase extends Identifiable {
     @ManyToOne
     @JoinColumn(name = "facultad_id")
     private Facultad facultad;
-
 }

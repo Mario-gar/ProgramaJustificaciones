@@ -1,7 +1,6 @@
 package org.UAM.ProgramaJustificacion.model;
 
 import javax.persistence.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.openxava.annotations.*;
@@ -12,7 +11,6 @@ import org.openxava.model.Identifiable;
 @Entity
 @Table(name = "Estudiante")
 public class Estudiante extends Identifiable {
-
     @OneToOne
     private Usuario usuario; // Asocia al Usuario
 
@@ -22,4 +20,7 @@ public class Estudiante extends Identifiable {
     @ManyToOne
     @DescriptionsList
     private Carrera carrera;
+
+    @Column(length = 50, unique = true, nullable = false)
+    private String cif; // Asegúrate de que esto sea único y no nulo
 }

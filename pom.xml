@@ -21,7 +21,17 @@
 			<artifactId>openxava</artifactId>
 			<version>${openxava.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+
 		<!-- 
 		To access to your database uncomment the corresponding entry 
 		from the below dependencies. If you don't find yours, look in
@@ -44,7 +54,8 @@
     		<version>42.7.4</version>
 		</dependency>
 
-		
+
+
 		<!-- Oracle 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>

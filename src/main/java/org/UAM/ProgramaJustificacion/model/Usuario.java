@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @NamedQuery(name = "Usuario.findUsuario", query = "SELECT u FROM Usuario u WHERE u.cif = ?1 AND u.password = ?2")
+@Table(name = "usuario")
 public class Usuario extends Identifiable {
-
     @Column(length = 50, unique = true, nullable = false)
     private String cif;
 
@@ -22,7 +22,5 @@ public class Usuario extends Identifiable {
     private String password;
 
     @Column(length = 20)
-    private String rol; // Por ejemplo: "Estudiante" o "Administrador"
+    private String rol;
 }
-
-
